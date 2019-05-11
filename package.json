@@ -8,8 +8,7 @@
         "build:prod": "vue-cli-service build --mode production",
         "build:dev": "vue-cli-service build --mode development",
         "build:test": "vue-cli-service build --mode test",
-        "build:protest": "vue-cli-service build --mode protest",
-        "lint": "vue-cli-service lint"
+        "build:protest": "vue-cli-service build --mode protest"
     },
     "dependencies": {
         "core-js": "^2.6.5",
