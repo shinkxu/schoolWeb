@@ -17,24 +17,64 @@
         <div class="home-project">
             <div class="project-title">
                 <span>虚拟仿真实验项目</span>
+                <div class="project-change">
+                    <img :src="proCurrentIndex === 1 ? leftUndoIcon : leftDoIcon"
+                         class="change-button"
+                         @click="changeLast()">
+                    <img :src="proCurrentIndex === projectsList.length  ? rightUndoIcon : rightDoIcon"
+                         class="change-button"
+                         @click="changeNext()">
+                </div>
             </div>
             <el-carousel :autoplay="false"
                          indicator-position="none"
-                         arrow="never">
+                         :loop="false"
+                         arrow="never"
+                         ref="projectCarousel">
                 <el-carousel-item v-for="(item, index) in projectsList"
-                                  :key="index">
-                    <ul class="project-list">
-                        <li class="project-item"
-                            v-for="(v, k) in item"
-                            :key="`list_${k}`">
-                            <img :src="v.img"
-                                 class="project-bg">
-                            <div class="project-desc">
-                                <h5>{{v.title}}</h5>
-                                <span>{{v.text}}</span>
-                            </div>
-                        </li>
-                    </ul>
+                                  :key="index"
+                                  class="project-list">
+                    <div class="project-item"
+                         v-for="(v, k) in item"
+                         :key="`list_${k}`">
+                        <img :src="v.img"
+                             class="project-bg">
+                        <div class="project-desc">
+                            <h5 class="desc-title">{{v.title}}</h5>
+                            <span class="desc-inner"
+                                  @click="jumpToExperiment()">{{v.text}}</span>
+                        </div>
+                    </div>
+                </el-carousel-item>
+            </el-carousel>
+        </div>
+        <div class="home-project home-source">
+            <div class="project-title">
+                <span>中心资源</span>
+                <div class="project-change">
+                    <img :src="sourceIndex === 1 ? leftUndoIcon : leftDoIcon"
+                         class="change-button"
+                         @click="changeSourceLast()">
+                    <img :src="sourceIndex === sourceList.length  ? rightUndoIcon : rightDoIcon"
+                         class="change-button"
+                         @click="changeSourceNext()">
+                </div>
+            </div>
+            <el-carousel :autoplay="false"
+                         indicator-position="none"
+                         :loop="false"
+                         arrow="never"
+                         height="300px"
+                         ref="sourceCarousel">
+                <el-carousel-item v-for="(item, index) in sourceList"
+                                  :key="index"
+                                  class="project-list">
+                    <div class="project-item"
+                         v-for="(v, k) in item"
+                         :key="`source_${k}`">
+                        <img :src="v"
+                             class="project-bg">
+                    </div>
                 </el-carousel-item>
             </el-carousel>
         </div>
@@ -82,28 +122,154 @@ export default {
                         title: '运营管理虚拟仿真',
                         text:
                             '虚拟仿真实验项目充分体现了工程教育理念，以轨道交通运营管理过程中产生的数据为基础，根据仿真分析结果对运营过程进行优化调整，贯彻培养学生工程实践和创新的理念，实现虚实结合的实践教学。',
-                        img: require('../../static/images/home_project_1.png')
+                        img: require('../../static/images/home_project_1.png'),
+                        id: '1'
                     },
                     {
                         title: '通信信号虚拟仿真',
                         text:
                             '虚拟仿真实验项目充分体现了通信信号一体化的技术发展趋势，以地面信号控制系统和通信网络为基础，结合车载信号系统，虚实结合培养学生工程应用和创新能力。',
-                        img: require('../../static/images/home_project_2.png')
+                        img: require('../../static/images/home_project_2.png'),
+                        id: '2'
                     },
                     {
                         title: '牵引供电虚拟仿真',
                         text:
                             '虚拟仿真实验项目主要包括牵引变电所虚拟仿真和牵引供电系统仿真实验，充分反映了高速铁路、城市轨道交通的供电技术发展趋势，用以学生对铁路牵引供电系统的系统性学习，掌握现场供电工程的设计、施工和运营的基本技能。',
-                        img: require('../../static/images/home_project_3.png')
+                        img: require('../../static/images/home_project_3.png'),
+                        id: '3'
                     },
                     {
                         title: '机车控制虚拟仿真',
                         text:
                             '虚拟仿真实验项目面向普速铁路和高速铁路两个方向，全面展现机车控制系统的组成结构和功能，用以学生对机车控制系统的系统性学习，掌握列车操纵驾驶过程中所涉及的专业技能。',
-                        img: require('../../static/images/home_project_4.png')
+                        img: require('../../static/images/home_project_4.png'),
+                        id: '4'
+                    }
+                ],
+                [
+                    {
+                        title: 'qqqqq',
+                        text:
+                            '虚拟仿真实验项目充分体现了工程教育理念，以轨道交通运营管理过程中产生的数据为基础，根据仿真分析结果对运营过程进行优化调整，贯彻培养学生工程实践和创新的理念，实现虚实结合的实践教学。',
+                        img: require('../../static/images/home_project_1.png'),
+                        id: '1'
+                    },
+                    {
+                        title: '22222',
+                        text:
+                            '虚拟仿真实验项目充分体现了通信信号一体化的技术发展趋势，以地面信号控制系统和通信网络为基础，结合车载信号系统，虚实结合培养学生工程应用和创新能力。',
+                        img: require('../../static/images/home_project_2.png'),
+                        id: '2'
+                    },
+                    {
+                        title: '322222',
+                        text:
+                            '虚拟仿真实验项目主要包括牵引变电所虚拟仿真和牵引供电系统仿真实验，充分反映了高速铁路、城市轨道交通的供电技术发展趋势，用以学生对铁路牵引供电系统的系统性学习，掌握现场供电工程的设计、施工和运营的基本技能。',
+                        img: require('../../static/images/home_project_3.png'),
+                        id: '3'
+                    },
+                    {
+                        title: '22222',
+                        text:
+                            '虚拟仿真实验项目面向普速铁路和高速铁路两个方向，全面展现机车控制系统的组成结构和功能，用以学生对机车控制系统的系统性学习，掌握列车操纵驾驶过程中所涉及的专业技能。',
+                        img: require('../../static/images/home_project_4.png'),
+                        id: '4'
+                    }
+                ],
+                [
+                    {
+                        title: 'aaaaaa',
+                        text:
+                            '虚拟仿真实验项目充分体现了工程教育理念，以轨道交通运营管理过程中产生的数据为基础，根据仿真分析结果对运营过程进行优化调整，贯彻培养学生工程实践和创新的理念，实现虚实结合的实践教学。',
+                        img: require('../../static/images/home_project_1.png'),
+                        id: '1'
+                    },
+                    {
+                        title: 'aaaaa',
+                        text:
+                            '虚拟仿真实验项目充分体现了通信信号一体化的技术发展趋势，以地面信号控制系统和通信网络为基础，结合车载信号系统，虚实结合培养学生工程应用和创新能力。',
+                        img: require('../../static/images/home_project_2.png'),
+                        id: '2'
+                    },
+                    {
+                        title: 'aaaa',
+                        text:
+                            '虚拟仿真实验项目主要包括牵引变电所虚拟仿真和牵引供电系统仿真实验，充分反映了高速铁路、城市轨道交通的供电技术发展趋势，用以学生对铁路牵引供电系统的系统性学习，掌握现场供电工程的设计、施工和运营的基本技能。',
+                        img: require('../../static/images/home_project_3.png'),
+                        id: '3'
+                    },
+                    {
+                        title: 'aaaaaaa',
+                        text:
+                            '虚拟仿真实验项目面向普速铁路和高速铁路两个方向，全面展现机车控制系统的组成结构和功能，用以学生对机车控制系统的系统性学习，掌握列车操纵驾驶过程中所涉及的专业技能。',
+                        img: require('../../static/images/home_project_4.png'),
+                        id: '4'
                     }
                 ]
-            ]
+            ],
+            proCurrentIndex: 1,
+            sourceList: [
+                [
+                    require('../../static/images/home_source_1.jpg'),
+                    require('../../static/images/home_source_1.jpg'),
+                    require('../../static/images/home_source_1.jpg'),
+                    require('../../static/images/home_source_1.jpg')
+                ],
+                [
+                    '../../static/images/home_source_2.jpg',
+                    '../../static/images/home_source_1.jpg',
+                    '../../static/images/home_source_1.jpg',
+                    '../../static/images/home_source_1.jpg'
+                ],
+                [
+                    '../../static/images/home_source_3.jpg',
+                    '../../static/images/home_source_1.jpg',
+                    '../../static/images/home_source_1.jpg',
+                    '../../static/images/home_source_1.jpg'
+                ],
+                [
+                    '../../static/images/home_source_4.jpg',
+                    '../../static/images/home_source_1.jpg',
+                    '../../static/images/home_source_1.jpg',
+                    '../../static/images/home_source_1.jpg'
+                ]
+            ],
+            sourceIndex: 1,
+            leftUndoIcon: require('../../static/images/home_arrow_left_undo.png'),
+            rightUndoIcon: require('../../static/images/home_arrow_right_undo.png'),
+            leftDoIcon: require('../../static/images/home_arrow_left_do.png'),
+            rightDoIcon: require('../../static/images/home_arrow_right_do.png')
+        }
+    },
+    methods: {
+        jumpToExperiment() {
+            this.$router.push('/experiment')
+        },
+        changeLast() {
+            if (this.proCurrentIndex === 1) return
+            this.proCurrentIndex--
+            this.$refs.projectCarousel.activeIndex = this.proCurrentIndex - 1
+        },
+        changeNext() {
+            if (
+                this.proCurrentIndex === this.projectsList.length &&
+                this.proCurrentIndex
+            )
+                return
+            this.proCurrentIndex++
+            this.$refs.projectCarousel.activeIndex = this.proCurrentIndex - 1
+        },
+        changeSourceLast() {
+            if (this.sourceIndex === 1) return
+            this.sourceIndex--
+            this.$refs.sourceCarousel.activeIndex = this.sourceIndex - 1
+        },
+        changeSourceNext() {
+            if (this.sourceIndex === this.sourceList.length && this.sourceIndex)
+                return
+            this.sourceIndex++
+            this.$refs.sourceCarousel.activeIndex = this.sourceIndex - 1
         }
     }
 }
@@ -173,15 +339,30 @@ export default {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            .project-change {
+                position: absolute;
+                right: 0;
+                top: 50%;
+                > img {
+                    width: 20px;
+                    height: 20px;
+                    cursor: pointer;
+                }
+            }
         }
         .project-list {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
-            align-items: flex-start;
+            align-items: stretch;
             .project-item {
                 flex: 1;
                 margin-right: 20px;
+                &:last-child {
+                    margin-right: 0;
+                }
                 .project-bg {
                     width: 100%;
                 }
@@ -189,11 +370,25 @@ export default {
                     background: @df-color;
                     color: #fff;
                     padding: 20px;
+                    min-height: 270px;
+                    .desc-title {
+                        font-size: 16px;
+                        margin: 0px 0 20px;
+                        text-align: center;
+                    }
+                    .desc-inner {
+                        line-height: 28px;
+                        text-align: left;
+                        cursor: pointer;
+                        &:hover {
+                            color: @active-color;
+                        }
+                    }
                 }
             }
         }
         .el-carousel__container {
-            height: auto;
+            height: 550px;
         }
     }
 }
