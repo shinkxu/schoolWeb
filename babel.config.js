@@ -9,5 +9,14 @@ module.exports = {
             // polyfills引用规则,值有： usage、entry、逐个列举
             useBuiltIns: 'entry'
         }]
+    ],
+    "plugins": [
+        [
+            "component",
+            {
+                "libraryName": "element-ui",
+                "styleLibraryName": "theme-chalk"
+            }
+        ]
     ]
 }
