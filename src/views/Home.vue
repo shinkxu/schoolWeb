@@ -1,83 +1,133 @@
 <template>
     <common id="home">
-        <el-carousel :interval="5000"
-                     class="home-banner">
-            <el-carousel-item class="banner-item"
-                              v-for="(item, index) in bannerList"
-                              :key="index">
-                <img class="item-bg"
-                     :src="item.bgImg">
-                <div class="item-inner">
-                    <div class="inner-title">{{item.title}}</div>
-                    <div class="inner-intro clamp-lines">{{item.text}}</div>
-                    <button class="inner-more">查看更多</button>
-                </div>
-            </el-carousel-item>
-        </el-carousel>
+        <div class="home-banner">
+            <el-carousel :interval="5000"
+                         class="containner">
+                <el-carousel-item class="banner-item "
+                                  v-for="(item, index) in bannerList"
+                                  :key="index">
+                    <img class="item-bg"
+                         :src="item.bgImg">
+                    <div class="item-inner">
+                        <div class="inner-title">{{item.title}}</div>
+                        <div class="inner-intro clamp-lines">{{item.text}}</div>
+                        <button class="inner-more">查看更多</button>
+                    </div>
+                </el-carousel-item>
+            </el-carousel>
+        </div>
         <div class="home-project">
-            <div class="project-title">
-                <span>虚拟仿真实验项目</span>
-                <div class="project-change">
-                    <img :src="proCurrentIndex === 1 ? leftUndoIcon : leftDoIcon"
-                         class="change-button"
-                         @click="changeLast()">
-                    <img :src="proCurrentIndex === projectsList.length  ? rightUndoIcon : rightDoIcon"
-                         class="change-button"
-                         @click="changeNext()">
+            <div class="containner">
+                <div class="project-title">
+                    <span>虚拟仿真实验项目</span>
+                    <div class="project-change">
+                        <img :src="proCurrentIndex === 1 ? leftUndoIcon : leftDoIcon"
+                             class="change-button"
+                             @click="changeLast()">
+                        <img :src="proCurrentIndex === projectsList.length  ? rightUndoIcon : rightDoIcon"
+                             class="change-button"
+                             @click="changeNext()">
+                    </div>
                 </div>
-            </div>
-            <el-carousel :autoplay="false"
-                         indicator-position="none"
-                         :loop="false"
-                         arrow="never"
-                         ref="projectCarousel">
-                <el-carousel-item v-for="(item, index) in projectsList"
-                                  :key="index"
-                                  class="project-list">
-                    <div class="project-item"
-                         v-for="(v, k) in item"
-                         :key="`list_${k}`">
-                        <img :src="v.img"
-                             class="project-bg">
-                        <div class="project-desc">
-                            <h5 class="desc-title">{{v.title}}</h5>
-                            <span class="desc-inner"
-                                  @click="jumpToExperiment()">{{v.text}}</span>
+                <el-carousel :autoplay="false"
+                             indicator-position="none"
+                             :loop="false"
+                             arrow="never"
+                             ref="projectCarousel">
+                    <el-carousel-item v-for="(item, index) in projectsList"
+                                      :key="index"
+                                      class="project-list">
+                        <div class="project-item"
+                             v-for="(v, k) in item"
+                             :key="`list_${k}`">
+                            <img :src="v.img"
+                                 class="project-bg">
+                            <div class="project-desc">
+                                <h5 class="desc-title">{{v.title}}</h5>
+                                <span class="desc-inner"
+                                      @click="jumpToExperiment()">{{v.text}}</span>
+                            </div>
                         </div>
-                    </div>
-                </el-carousel-item>
-            </el-carousel>
+                    </el-carousel-item>
+                </el-carousel>
+            </div>
         </div>
-        <div class="home-project home-source">
-            <div class="project-title">
-                <span>中心资源</span>
-                <div class="project-change">
-                    <img :src="sourceIndex === 1 ? leftUndoIcon : leftDoIcon"
-                         class="change-button"
-                         @click="changeSourceLast()">
-                    <img :src="sourceIndex === sourceList.length  ? rightUndoIcon : rightDoIcon"
-                         class="change-button"
-                         @click="changeSourceNext()">
+        <div class="home-news">
+            <div class="home-news-inner containner">
+                <div class="news-notice">
+                    <div class="news-title">
+                        <h3>通知公告</h3>
+                        <span>+ 更多</span>
+                    </div>
+                    <ul class="news-list">
+                        <li class="news-item">
+                            <i class="news-style"></i>
+                            <span class="news-desc clamp-line">学校召开国家虚拟仿真实验教学项目申报经验报告会</span>
+                            <span class="news-time">2019-01-01</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="news-result">
+                    <div class="news-title">
+                        <h3>教学成果</h3>
+                        <span>+ 更多</span>
+                    </div>
+                    <ul class="news-list">
+                        <li class="news-item">
+                            <i class="news-style"></i>
+                            <span class="news-desc clamp-line">学校召开国家虚拟仿真实验教学项目申报经验报告会</span>
+                            <span class="news-time">2019-01-01</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <el-carousel :autoplay="false"
-                         indicator-position="none"
-                         :loop="false"
-                         arrow="never"
-                         height="300px"
-                         ref="sourceCarousel">
-                <el-carousel-item v-for="(item, index) in sourceList"
-                                  :key="index"
-                                  class="project-list">
-                    <div class="project-item"
-                         v-for="(v, k) in item"
-                         :key="`source_${k}`">
-                        <img :src="v"
-                             class="project-bg">
-                    </div>
-                </el-carousel-item>
-            </el-carousel>
         </div>
+        <div class="home-project home-source ">
+            <div class="containner">
+                <div class="project-title">
+                    <span>中心资源</span>
+                    <div class="project-change">
+                        <img :src="sourceIndex === 1 ? leftUndoIcon : leftDoIcon"
+                             class="change-button"
+                             @click="changeSourceLast()">
+                        <img :src="sourceIndex === sourceList.length  ? rightUndoIcon : rightDoIcon"
+                             class="change-button"
+                             @click="changeSourceNext()">
+                    </div>
+                </div>
+                <el-carousel :autoplay="false"
+                             indicator-position="none"
+                             :loop="false"
+                             arrow="never"
+                             height="200px"
+                             ref="sourceCarousel">
+                    <el-carousel-item v-for="(item, index) in sourceList"
+                                      :key="index"
+                                      class="project-list">
+                        <div class="project-item"
+                             v-for="(v, k) in item"
+                             :key="`source_${k}`">
+                            <img :src="v"
+                                 class="project-bg">
+                        </div>
+                    </el-carousel-item>
+                </el-carousel>
+            </div>
+        </div>
+        <div class="home-footer">
+            <div class="home-footer-inner containner">
+                <img src="../../static/images/u148.jpg" />
+                <img src="../../static/images/u150.jpg" />
+                <img src="../../static/images/u152.jpg" />
+                <img src="../../static/images/u154.jpg" />
+                <img src="../../static/images/u156.jpg" />
+                <img src="../../static/images/u158.jpg" />
+                <img src="../../static/images/u160.jpg" />
+                <img src="../../static/images/u162.jpg" />
+                <img src="../../static/images/u164.jpg" />
+            </div>
+        </div>
+
     </common>
 </template>
 
@@ -278,11 +328,16 @@ export default {
 <style lang="less">
 @import '../../static/css/base.less';
 #home {
+    background: #fff;
+    .containner {
+        width: 1220px;
+        margin: 0 auto;
+    }
     .home-banner {
         margin: 20px 0;
         height: 300px;
         overflow: hidden;
-
+        background: #ededed;
         .banner-item {
             .item-bg {
                 width: 100%;
@@ -389,6 +444,89 @@ export default {
         }
         .el-carousel__container {
             height: 550px;
+        }
+    }
+    .home-news {
+        background: #ededed;
+        .home-news-inner {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .news-notice,
+        .news-result {
+            flex: 1;
+        }
+        .news-notice {
+            margin-right: 30px;
+        }
+        .news-title {
+            padding: 20px 0;
+            border-bottom: 1px solid #999;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            > h3 {
+                font-size: 24px;
+                color: #6b6b6b;
+                font-weight: bold;
+            }
+            > span {
+                &:hover {
+                    color: rgb(0, 101, 156);
+                    cursor: pointer;
+                }
+            }
+        }
+        .news-list {
+            padding: 20px 0;
+            .news-item {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                margin-bottom: 5px;
+                .news-style {
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: rgb(0, 101, 156);
+                    margin-right: 10px;
+                }
+                .news-desc {
+                    flex: 1;
+                    &:hover {
+                        color: rgb(0, 101, 156);
+                        cursor: pointer;
+                    }
+                }
+                .news-time {
+                    width: 100px;
+                    text-align: right;
+                }
+            }
+        }
+    }
+    .home-footer {
+        background-color: rgba(54, 54, 54, 1);
+        margin: 0 auto;
+
+        .home-footer-inner {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #999;
+            > img {
+                height: 40px;
+                margin-right: 5px;
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
         }
     }
 }

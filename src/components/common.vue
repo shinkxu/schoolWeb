@@ -28,6 +28,18 @@
         <div class="app-content">
             <slot></slot>
         </div>
+        <div class="footer">
+            <p>
+                <span>
+                    版权所有 兰州交通大学 通讯地址：兰州市安宁区安宁西路88号 邮编：730070
+                </span>
+            </p>
+            <p>
+                <span>
+                    域名备案信息：[www.lzjtu.edu.cn/陇ICP备14001560号-2] [www.lzjtu.cn]
+                </span>
+            </p>
+        </div>
     </div>
 </template>
 
@@ -153,6 +165,7 @@ export default {
                 flex-direction: row;
                 justify-content: center;
                 align-items: center;
+                cursor: pointer;
             }
         }
         .head-login {
@@ -160,6 +173,10 @@ export default {
             padding: 8px 12px;
             background: #006666;
             margin-left: 10px;
+            &:hover {
+                background: green;
+                cursor: pointer;
+            }
         }
     }
     .head-menu {
@@ -188,8 +205,15 @@ export default {
         }
     }
     .app-content {
-        width: 1220px;
-        margin: 0 auto;
+        // width: 1220px;
+        // margin: 0 auto;
+    }
+    .footer {
+        background-color: rgba(54, 54, 54, 1);
+        text-align: center;
+        color: #fff;
+        padding: 30px 0;
+        line-height: 1.4;
     }
 }
 </style>
