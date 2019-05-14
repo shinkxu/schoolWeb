@@ -3,7 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import '@babel/polyfill'
-import '../static/css/base.less'
+// todo: 如何全局引入公共的css
+// import '../static/css/base.less'
 
 
 Vue.config.productionTip = false
