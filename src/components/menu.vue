@@ -47,8 +47,6 @@ export default {
         font-size: 18px;
         color: #ffffff;
     }
-    .menu-content {
-    }
     .menu-item {
         padding: 14px;
         font-size: 16px;
