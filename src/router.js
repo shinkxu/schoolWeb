@@ -4,6 +4,10 @@ import Router from 'vue-router'
 const Home = () => import( /* webpackChunkName: "about" */ './views/Home.vue')
 const Center = () => import( /* webpackChunkName: "Center" */ './views/Center.vue')
 const News = () => import( /* webpackChunkName: "News" */ './views/News.vue')
+const Source = () => import( /* webpackChunkName: "Source" */ './views/source.vue')
+const Rules = () => import( /* webpackChunkName: "Rules" */ './views/rules.vue')
+const Equipment = () => import( /* webpackChunkName: "Equipment" */ './views/equipment.vue')
+const Result = () => import( /* webpackChunkName: "Result" */ './views/result.vue')
 const About = () => import( /* webpackChunkName: "about" */ './views/About.vue')
 
 Vue.use(Router)
@@ -30,6 +34,26 @@ export default new Router({
             path: '/news',
             name: 'news',
             component: News
+        },
+        {
+            path: '/source',
+            name: 'source',
+            component: Source
+        },
+        {
+            path: '/rules',
+            name: 'rules',
+            component: Rules
+        },
+        {
+            path: '/equipment',
+            name: 'equipment',
+            component: Equipment
+        },
+        {
+            path: '/result',
+            name: 'result',
+            component: Result
         },
         {
             path: '/about',

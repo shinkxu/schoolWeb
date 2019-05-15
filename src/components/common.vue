@@ -87,7 +87,7 @@ export default {
                 {
                     name: '设备环境',
                     id: 7,
-                    path: '/device'
+                    path: '/equipment'
                 },
                 {
                     name: '教学成果',
