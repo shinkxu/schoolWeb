@@ -205,8 +205,7 @@ export default {
         }
     }
     .app-content {
-        // width: 1220px;
-        // margin: 0 auto;
+        padding: 30px 0;
     }
     .footer {
         background-color: rgba(54, 54, 54, 1);

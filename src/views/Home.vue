@@ -132,12 +132,10 @@
 </template>
 
 <script>
-import Common from '../components/common.vue'
 import { Carousel, CarouselItem } from 'element-ui'
 
 export default {
     components: {
-        [Common.name]: Common,
         [Carousel.name]: Carousel,
         [CarouselItem.name]: CarouselItem
     },
@@ -329,10 +327,6 @@ export default {
 @import '../../static/css/base.less';
 #home {
     background: #fff;
-    .containner {
-        width: 1220px;
-        margin: 0 auto;
-    }
     .home-banner {
         margin: 20px 0;
         height: 300px;
