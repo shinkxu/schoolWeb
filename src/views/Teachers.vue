@@ -1,9 +1,9 @@
 <template>
-    <common id="rules">
+    <common id="teachers">
         <div class="app-inner containner">
             <menu-list class="center-menu"
                        :menuList="menuList"
-                       menuTitle="规章制度"
+                       menuTitle="师资队伍"
                        @change="changeMenu"></menu-list>
             <div class="app-inner-right">
                 <div v-show="this.currentIndex === 0">

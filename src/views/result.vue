@@ -1,12 +1,11 @@
 <template>
-    <common id="about">
-        <div class="about">
+    <common id="result">
+        <div class="app-inner containner">
             <menu-list class="center-menu"
                        :menuList="menuList"
                        menuTitle="教学成果"
                        @change="changeMenu"></menu-list>
-            <div class="center-right">
-                <!-- 中心简介 -->
+            <div class="app-inner-right">
                 <div v-show="this.currentIndex === 0">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
@@ -18,7 +17,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- 中心风貌 -->
                 <div v-show="this.currentIndex === 1">
 
                 </div>
@@ -28,61 +26,21 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                menuList: [
-                ],
-                currentIndex: 0
-            }
-        },
-        methods: {
-            changeMenu(index) {
-                this.currentIndex = index
-            }
+export default {
+    data() {
+        return {
+            menuList: [],
+            currentIndex: 0
+        }
+    },
+    methods: {
+        changeMenu(index) {
+            this.currentIndex = index
         }
     }
+}
 </script>
 
 <style lang="less">
-    @import url('../../static/css/base');
-    #about {
-        .about {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: flex-start;
-            .center-menu {
-                margin: 20px 30px 0 0;
-            }
-            .center-right {
-                flex: 1;
-                margin-top: 20px;
-                .news-img {
-                    width: 100%;
-                }
-                .news-title {
-                    font-size: 28px;
-                    font-weight: bold;
-                    text-align: center;
-                    margin: 20px 0;
-                }
-                .news-time {
-                    padding-bottom: 20px;
-                    border-bottom: 1px solid #999;
-                    color: #666;
-                    text-align: center;
-                }
-                .news-content {
-                    margin-top: 20px;
-                }
-                p {
-                    margin-bottom: 20px;
-                    text-indent: 28px;
-                    font-size: 16px;
-                    line-height: 1.6;
-                }
-            }
-        }
-    }
+@import url('../../static/css/base');
 </style>

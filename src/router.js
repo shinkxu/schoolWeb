@@ -5,10 +5,11 @@ const Home = () => import( /* webpackChunkName: "about" */ './views/Home.vue')
 const Center = () => import( /* webpackChunkName: "Center" */ './views/Center.vue')
 const News = () => import( /* webpackChunkName: "News" */ './views/News.vue')
 const Experiment = () => import( /* webpackChunkName: "Experiment" */ './views/Experiment.vue')
-const Source = () => import( /* webpackChunkName: "Source" */ './views/source.vue')
-const Rules = () => import( /* webpackChunkName: "Rules" */ './views/rules.vue')
-const Equipment = () => import( /* webpackChunkName: "Equipment" */ './views/equipment.vue')
-const Result = () => import( /* webpackChunkName: "Result" */ './views/result.vue')
+const Source = () => import( /* webpackChunkName: "Source" */ './views/Source.vue')
+const Rules = () => import( /* webpackChunkName: "Rules" */ './views/Rules.vue')
+const Equipment = () => import( /* webpackChunkName: "Equipment" */ './views/Equipment.vue')
+const Result = () => import( /* webpackChunkName: "Result" */ './views/Result.vue')
+const Teachers = () => import( /* webpackChunkName: "Teacher" */ './views/Teachers.vue')
 const About = () => import( /* webpackChunkName: "about" */ './views/About.vue')
 
 Vue.use(Router)
@@ -60,6 +61,11 @@ export default new Router({
             path: '/result',
             name: 'result',
             component: Result
+        },
+        {
+            path: '/teachers',
+            name: 'teachers',
+            component: Teachers
         },
         {
             path: '/about',

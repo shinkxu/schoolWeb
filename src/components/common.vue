@@ -205,7 +205,7 @@ export default {
         }
     }
     .app-content {
-        padding: 30px 0;
+        padding: 20px 0 0;
     }
     .footer {
         background-color: rgba(54, 54, 54, 1);

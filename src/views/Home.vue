@@ -327,6 +327,9 @@ export default {
 @import '../../static/css/base.less';
 #home {
     background: #fff;
+    .app-content {
+        padding: 10px 0 0;
+    }
     .home-banner {
         margin: 20px 0;
         height: 300px;
