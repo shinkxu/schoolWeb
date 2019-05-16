@@ -10,7 +10,7 @@
                     <img class="news-img"
                          src="../../static/images/news_img.png">
                     <div class="news-title">学生实验守则</div>
-                    <div class="news-time">发布时间:2019-04-08 17:49:20</div>
+                    <div class="news-common-time">发布时间:2019-04-08 17:49:20</div>
                     <div class="news-content">
                         <p>
                             一、学生实验前应通过轨道交通信息与控制虚拟仿真实验教学中心门户网站认真预习，明确实验目的、步骤、对指导教师或实验技术人员抽查提问回答不合要求者，须重新预习，否则不准其做实验。
