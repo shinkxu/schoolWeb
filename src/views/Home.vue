@@ -45,7 +45,7 @@
                             <div class="project-desc">
                                 <h5 class="desc-title">{{v.title}}</h5>
                                 <span class="desc-inner"
-                                      @click="jumpToExperiment()">{{v.text}}</span>
+                                      @click="jumpToExperiment(k)">{{v.text}}</span>
                             </div>
                         </div>
                     </el-carousel-item>
@@ -291,8 +291,8 @@ export default {
         }
     },
     methods: {
-        jumpToExperiment() {
-            this.$router.push('/experiment')
+        jumpToExperiment(index) {
+            this.$router.push(`/experiment?id=${index}`)
         },
         changeLast() {
             if (this.proCurrentIndex === 1) return

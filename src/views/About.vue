@@ -1,6 +1,6 @@
 <template>
     <common id="about">
-        <div class="about">
+        <div class="about containner">
             <menu-list class="center-menu"
                        :menuList="menuList"
                        menuTitle="关于我们"
@@ -37,61 +37,60 @@
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                menuList: [
-                ],
-                currentIndex: 0
-            }
-        },
-        methods: {
-            changeMenu(index) {
-                this.currentIndex = index
-            }
+export default {
+    data() {
+        return {
+            menuList: [],
+            currentIndex: 0
+        }
+    },
+    methods: {
+        changeMenu(index) {
+            this.currentIndex = index
         }
     }
+}
 </script>
 
 <style lang="less">
-    @import url('../../static/css/base');
-    #about {
-        .about {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: flex-start;
-            .center-menu {
-                margin: 20px 30px 0 0;
+@import url('../../static/css/base');
+#about {
+    .about {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        .center-menu {
+            margin: 20px 30px 0 0;
+        }
+        .center-right {
+            flex: 1;
+            margin-top: 20px;
+            .news-img {
+                width: 100%;
             }
-            .center-right {
-                flex: 1;
+            .news-title {
+                font-size: 28px;
+                font-weight: bold;
+                text-align: center;
+                margin: 20px 0;
+            }
+            .news-time {
+                padding-bottom: 20px;
+                border-bottom: 1px solid #999;
+                color: #666;
+                text-align: center;
+            }
+            .news-content {
                 margin-top: 20px;
-                .news-img {
-                    width: 100%;
-                }
-                .news-title {
-                    font-size: 28px;
-                    font-weight: bold;
-                    text-align: center;
-                    margin: 20px 0;
-                }
-                .news-time {
-                    padding-bottom: 20px;
-                    border-bottom: 1px solid #999;
-                    color: #666;
-                    text-align: center;
-                }
-                .news-content {
-                    margin-top: 20px;
-                }
-                p {
-                    margin-bottom: 20px;
-                    text-indent: 28px;
-                    font-size: 16px;
-                    line-height: 1.6;
-                }
+            }
+            p {
+                margin-bottom: 20px;
+                text-indent: 28px;
+                font-size: 16px;
+                line-height: 1.6;
             }
         }
     }
+}
 </style>

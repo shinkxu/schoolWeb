@@ -2,12 +2,14 @@
     <div class="menu-tree-list">
         <div class="menu-title">{{menuTitle}}</div>
         <el-collapse class="menu-content"
-                     accordion>
+                     accordion
+                     v-model="currentIndex">
             <el-collapse-item class="menu-item"
                               :title="item.name"
                               :class="{'active': currentIndex === index}"
                               v-for="(item, index) in menuList"
                               :key="index"
+                              :name="index"
                               @click="change(index)">
                 <div class="menu-item-sub"
                      v-for="(v, k) in item.list"
@@ -29,11 +31,17 @@ export default {
         menuList: {
             type: Array,
             default: []
-        }
+        },
+        activeIndex: 0
     },
     components: {
         [Collapse.name]: Collapse,
         [CollapseItem.name]: CollapseItem
+    },
+    watch: {
+        activeIndex(val) {
+            this.currentIndex = val
+        }
     },
     data() {
         return {

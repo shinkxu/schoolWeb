@@ -100,15 +100,6 @@ export default {
 <style lang="less">
 @import url('../../static/css/base');
 #center {
-    .news-content {
-        margin-top: 20px;
-    }
-    p {
-        margin-bottom: 20px;
-        text-indent: 28px;
-        font-size: 16px;
-        line-height: 1.6;
-    }
     .news-style {
         display: flex;
         flex-wrap: wrap;
