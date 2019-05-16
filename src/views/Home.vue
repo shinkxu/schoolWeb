@@ -11,7 +11,8 @@
                     <div class="item-inner">
                         <div class="inner-title">{{item.title}}</div>
                         <div class="inner-intro clamp-lines">{{item.text}}</div>
-                        <button class="inner-more">查看更多</button>
+                        <button class="inner-more"
+                                @click="jumpToCenter()">查看更多</button>
                     </div>
                 </el-carousel-item>
             </el-carousel>
@@ -318,6 +319,9 @@ export default {
                 return
             this.sourceIndex++
             this.$refs.sourceCarousel.activeIndex = this.sourceIndex - 1
+        },
+        jumpToCenter() {
+            this.$router.push('/center')
         }
     }
 }
