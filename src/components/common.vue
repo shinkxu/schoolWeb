@@ -1,7 +1,8 @@
 <template>
     <div class="app-wrapper">
         <div class="head-top">
-            <div class="head-left">
+            <div class="head-left"
+                 @click="jumpToHome()">
                 <img src="../../static/images/logo.png"
                      class="head-logo">
                 <span class="head-name">土木工程学院虚拟仿真实验教学中心</span>
@@ -105,6 +106,9 @@ export default {
     methods: {
         jumpToPage(path) {
             this.$router.push(path)
+        },
+        jumpToHome() {
+            this.$router.push('/home')
         }
     }
 }
@@ -126,6 +130,7 @@ export default {
             flex-direction: row;
             justify-content: flex-start;
             align-items: center;
+            cursor: pointer;
             .head-logo {
                 width: 90px;
                 height: 80px;
