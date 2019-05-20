@@ -58,9 +58,10 @@
                 <div class="news-notice">
                     <div class="news-title">
                         <h3>通知公告</h3>
-                        <span>+ 更多</span>
+                        <span @click="jumpToNews()">+ 更多</span>
                     </div>
-                    <ul class="news-list">
+                    <ul class="
+                              news-list">
                         <li class="news-item">
                             <i class="news-style"></i>
                             <span class="news-desc clamp-line">学校召开国家虚拟仿真实验教学项目申报经验报告会</span>
@@ -71,7 +72,7 @@
                 <div class="news-result">
                     <div class="news-title">
                         <h3>教学成果</h3>
-                        <span>+ 更多</span>
+                        <span @click="jumpToResult()">+ 更多</span>
                     </div>
                     <ul class="news-list">
                         <li class="news-item">
@@ -322,6 +323,12 @@ export default {
         },
         jumpToCenter() {
             this.$router.push('/center')
+        },
+        jumpToNews() {
+            this.$router.push('/news?id=1')
+        },
+        jumpToResult() {
+            this.$router.push('/result?id=1')
         }
     }
 }
