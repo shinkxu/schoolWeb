@@ -134,6 +134,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { Carousel, CarouselItem } from 'element-ui'
 
 export default {
@@ -143,6 +144,7 @@ export default {
     },
     data() {
         return {
+            collegeId: Number(localStorage.getItem('collegeId')),
             bannerList: [
                 {
                     bgImg: require('../../static/images/banner_1.jpg'),
@@ -293,6 +295,19 @@ export default {
         }
     },
     methods: {
+        getBannerList() {
+            const data = {
+                page: 1,
+                rows: 10000,
+                collegeId: this.collegeId,
+                columnId: 20
+            }
+            Vue.axios
+                .post(this.API_ROOT + 'columnContent/listFront', data)
+                .then(res => {
+                    this.bannerList = (res.data && res.data.items) || []
+                })
+        },
         jumpToExperiment(index) {
             this.$router.push(`/experiment?id=${index}`)
         },
@@ -330,6 +345,12 @@ export default {
         jumpToResult() {
             this.$router.push('/result?id=1')
         }
+    },
+    mounted() {
+        if (this.$route.query.id) {
+            localStorage.setItem('collegeId', this.$route.query.id)
+        }
+        this.getBannerList()
     }
 }
 </script>

@@ -9,7 +9,7 @@ module.exports = {
             errors: false
         },
         host: '0.0.0.0',
-        port: '4001' // 监听端口
+        port: '8020' // 监听端口
     },
     productionSourceMap: false // 生产环境不生成source map,加速生产环境构建
 }
