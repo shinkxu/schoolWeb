@@ -3,19 +3,19 @@
         <div class="app-inner containner">
             <menu-list class="center-menu"
                        :menuList="menuList"
-                       menuTitle="通知公告"
+                       menuTitle="新闻公告"
                        @change="changeMenu"></menu-list>
             <div class="app-inner-right">
                 <img class="news-img"
                      src="../../static/images/news_img.png">
                 <ul v-show="currentIndex === 0"
                     class="news-notice-list">
-                    <li v-for="(item, index) in 10"
+                    <li v-for="(item, index) in list1"
                         :key="index"
                         class="news-item">
                         <i class="news-style"></i>
-                        <span class="news-desc clamp-line">学校召开国家虚拟仿真实验教学项目申报经验报告会</span>
-                        <span class="news-time">2019-01-01</span>
+                        <span class="news-desc clamp-line">{{item.title}}</span>
+                        <span class="news-time">{{new Date(item.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</span>
                     </li>
                 </ul>
                 <div class="my-pagination">
@@ -26,10 +26,10 @@
                                    :current-page="pageCount"
                                    @current-change="changeCount"
                                    layout="prev, pager, next"
-                                   :total="1000">
+                                   :total="total">
                     </el-pagination>
-                    <button :class="{'disable': pageCount === 100}"
-                            :disabled="pageCount === 100">尾页</button>
+                    <button :class="{'disable': pageCount === total}"
+                            :disabled="pageCount === total">尾页</button>
                 </div>
             </div>
         </div>
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 import { Pagination } from 'element-ui'
 
 export default {
@@ -55,16 +56,55 @@ export default {
             ],
             currentIndex: 0,
             newsList: [],
-            pageCount: 1
+            list1: [],
+            total: 0,
+            list2: [],
+            pageCount: 1,
+            collegeId: Number(localStorage.getItem('collegeId'))
         }
     },
     methods: {
         changeMenu(index) {
+            this.pageCount = 1
+            this.total = 0
             this.currentIndex = index
+            index === 0 ? this.getList1() : this.getList2()
         },
         changeCount(index) {
             this.pageCount = index
+        },
+        getList1() {
+            const data = {
+                page: this.pageCount,
+                rows: 10,
+                collegeId: this.collegeId,
+                columnId: 31
+            }
+            Vue.axios
+                .post(this.API_ROOT + 'columnContent/listFront', data)
+                .then(res => {
+                    this.list1 = (res.data && res.data.items) || []
+                    this.total = (res.data && res.data.total) || 0
+                })
+        },
+        getList2() {
+            const data = {
+                page: this.pageCount,
+                rows: 10,
+                collegeId: this.collegeId,
+                columnId: 32
+            }
+            Vue.axios
+                .post(this.API_ROOT + 'columnContent/listFront', data)
+                .then(res => {
+                    this.list2 = (res.data && res.data.items) || []
+                    this.total = (res.data && res.data.total) || 0
+                })
         }
+    },
+    mounted() {
+        this.getList1()
+        this.getList2()
     }
 }
 </script>
@@ -98,7 +138,7 @@ export default {
             }
         }
         .news-time {
-            width: 100px;
+            width: 200px;
             text-align: right;
         }
     }

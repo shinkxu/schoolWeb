@@ -7,10 +7,10 @@
                                   v-for="(item, index) in bannerList"
                                   :key="index">
                     <img class="item-bg"
-                         :src="item.bgImg">
+                         :src="item.showImg">
                     <div class="item-inner">
                         <div class="inner-title">{{item.title}}</div>
-                        <div class="inner-intro clamp-lines">{{item.text}}</div>
+                        <div class="inner-intro clamp-lines">{{item.content}}</div>
                         <button class="inner-more"
                                 @click="jumpToCenter()">查看更多</button>
                     </div>
@@ -41,12 +41,12 @@
                         <div class="project-item"
                              v-for="(v, k) in item"
                              :key="`list_${k}`">
-                            <img :src="v.img"
+                            <img :src="v.showImg"
                                  class="project-bg">
                             <div class="project-desc">
                                 <h5 class="desc-title">{{v.title}}</h5>
                                 <span class="desc-inner"
-                                      @click="jumpToExperiment(k)">{{v.text}}</span>
+                                      @click="jumpToExperiment(k)">{{v.content}}</span>
                             </div>
                         </div>
                     </el-carousel-item>
@@ -60,12 +60,13 @@
                         <h3>通知公告</h3>
                         <span @click="jumpToNews()">+ 更多</span>
                     </div>
-                    <ul class="
-                              news-list">
-                        <li class="news-item">
+                    <ul class="news-list">
+                        <li class="news-item"
+                            v-for="(item, index) in noticeList"
+                            :key="index">
                             <i class="news-style"></i>
-                            <span class="news-desc clamp-line">学校召开国家虚拟仿真实验教学项目申报经验报告会</span>
-                            <span class="news-time">2019-01-01</span>
+                            <span class="news-desc clamp-line">{{item.title}}</span>
+                            <span class="news-time">{{new Date(item.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</span>
                         </li>
                     </ul>
                 </div>
@@ -75,16 +76,19 @@
                         <span @click="jumpToResult()">+ 更多</span>
                     </div>
                     <ul class="news-list">
-                        <li class="news-item">
+                        <li class="news-item"
+                            v-for="(item, index) in resultList"
+                            :key="index">
                             <i class="news-style"></i>
-                            <span class="news-desc clamp-line">学校召开国家虚拟仿真实验教学项目申报经验报告会</span>
-                            <span class="news-time">2019-01-01</span>
+                            <span class="news-desc clamp-line">{{item.title}}</span>
+                            <span class="news-time">{{new Date(item.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</span>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="home-project home-source ">
+        <div class="home-project home-source "
+             id="home-source">
             <div class="containner">
                 <div class="project-title">
                     <span>中心资源</span>
@@ -109,7 +113,7 @@
                         <div class="project-item"
                              v-for="(v, k) in item"
                              :key="`source_${k}`">
-                            <img :src="v"
+                            <img :src="v.showImg"
                                  class="project-bg">
                         </div>
                     </el-carousel-item>
@@ -145,149 +149,15 @@ export default {
     data() {
         return {
             collegeId: Number(localStorage.getItem('collegeId')),
-            bannerList: [
-                {
-                    bgImg: require('../../static/images/banner_1.jpg'),
-                    text:
-                        '兰州交通大学土木工程实验教学示范中心是由原1958年迁兰建校初期的工程力学实验室、工程测量实验室、建筑材料实验室、结构实验室、地质实验室、土力学实验室、流体力学实验室、于2002年合并组建而成，2004年被学校批准为校级实验教学示范中心......',
-                    title: '中心介绍',
-                    path: '/center'
-                },
-                {
-                    bgImg: require('../../static/images/banner_1.jpg'),
-                    text:
-                        '兰州交通大学土木工程实验教学示范中心是由原1958年迁兰建校初期的工程力学实验室、工程测量实验室、建筑材料实验室、结构实验室、地质实验室、土力学实验室、流体力学实验室、于2002年合并组建而成，2004年被学校批准为校级实验教学示范中心......',
-                    title: '中心介绍',
-                    path: '/center'
-                },
-                {
-                    bgImg: require('../../static/images/banner_1.jpg'),
-                    text:
-                        '兰州交通大学土木工程实验教学示范中心是由原1958年迁兰建校初期的工程力学实验室、工程测量实验室、建筑材料实验室、结构实验室、地质实验室、土力学实验室、流体力学实验室、于2002年合并组建而成，2004年被学校批准为校级实验教学示范中心......',
-                    title: '中心介绍',
-                    path: '/center'
-                }
-            ],
-            projectsList: [
-                [
-                    {
-                        title: '运营管理虚拟仿真',
-                        text:
-                            '虚拟仿真实验项目充分体现了工程教育理念，以轨道交通运营管理过程中产生的数据为基础，根据仿真分析结果对运营过程进行优化调整，贯彻培养学生工程实践和创新的理念，实现虚实结合的实践教学。',
-                        img: require('../../static/images/home_project_1.png'),
-                        id: '1'
-                    },
-                    {
-                        title: '通信信号虚拟仿真',
-                        text:
-                            '虚拟仿真实验项目充分体现了通信信号一体化的技术发展趋势，以地面信号控制系统和通信网络为基础，结合车载信号系统，虚实结合培养学生工程应用和创新能力。',
-                        img: require('../../static/images/home_project_2.png'),
-                        id: '2'
-                    },
-                    {
-                        title: '牵引供电虚拟仿真',
-                        text:
-                            '虚拟仿真实验项目主要包括牵引变电所虚拟仿真和牵引供电系统仿真实验，充分反映了高速铁路、城市轨道交通的供电技术发展趋势，用以学生对铁路牵引供电系统的系统性学习，掌握现场供电工程的设计、施工和运营的基本技能。',
-                        img: require('../../static/images/home_project_3.png'),
-                        id: '3'
-                    },
-                    {
-                        title: '机车控制虚拟仿真',
-                        text:
-                            '虚拟仿真实验项目面向普速铁路和高速铁路两个方向，全面展现机车控制系统的组成结构和功能，用以学生对机车控制系统的系统性学习，掌握列车操纵驾驶过程中所涉及的专业技能。',
-                        img: require('../../static/images/home_project_4.png'),
-                        id: '4'
-                    }
-                ],
-                [
-                    {
-                        title: 'qqqqq',
-                        text:
-                            '虚拟仿真实验项目充分体现了工程教育理念，以轨道交通运营管理过程中产生的数据为基础，根据仿真分析结果对运营过程进行优化调整，贯彻培养学生工程实践和创新的理念，实现虚实结合的实践教学。',
-                        img: require('../../static/images/home_project_1.png'),
-                        id: '1'
-                    },
-                    {
-                        title: '22222',
-                        text:
-                            '虚拟仿真实验项目充分体现了通信信号一体化的技术发展趋势，以地面信号控制系统和通信网络为基础，结合车载信号系统，虚实结合培养学生工程应用和创新能力。',
-                        img: require('../../static/images/home_project_2.png'),
-                        id: '2'
-                    },
-                    {
-                        title: '322222',
-                        text:
-                            '虚拟仿真实验项目主要包括牵引变电所虚拟仿真和牵引供电系统仿真实验，充分反映了高速铁路、城市轨道交通的供电技术发展趋势，用以学生对铁路牵引供电系统的系统性学习，掌握现场供电工程的设计、施工和运营的基本技能。',
-                        img: require('../../static/images/home_project_3.png'),
-                        id: '3'
-                    },
-                    {
-                        title: '22222',
-                        text:
-                            '虚拟仿真实验项目面向普速铁路和高速铁路两个方向，全面展现机车控制系统的组成结构和功能，用以学生对机车控制系统的系统性学习，掌握列车操纵驾驶过程中所涉及的专业技能。',
-                        img: require('../../static/images/home_project_4.png'),
-                        id: '4'
-                    }
-                ],
-                [
-                    {
-                        title: 'aaaaaa',
-                        text:
-                            '虚拟仿真实验项目充分体现了工程教育理念，以轨道交通运营管理过程中产生的数据为基础，根据仿真分析结果对运营过程进行优化调整，贯彻培养学生工程实践和创新的理念，实现虚实结合的实践教学。',
-                        img: require('../../static/images/home_project_1.png'),
-                        id: '1'
-                    },
-                    {
-                        title: 'aaaaa',
-                        text:
-                            '虚拟仿真实验项目充分体现了通信信号一体化的技术发展趋势，以地面信号控制系统和通信网络为基础，结合车载信号系统，虚实结合培养学生工程应用和创新能力。',
-                        img: require('../../static/images/home_project_2.png'),
-                        id: '2'
-                    },
-                    {
-                        title: 'aaaa',
-                        text:
-                            '虚拟仿真实验项目主要包括牵引变电所虚拟仿真和牵引供电系统仿真实验，充分反映了高速铁路、城市轨道交通的供电技术发展趋势，用以学生对铁路牵引供电系统的系统性学习，掌握现场供电工程的设计、施工和运营的基本技能。',
-                        img: require('../../static/images/home_project_3.png'),
-                        id: '3'
-                    },
-                    {
-                        title: 'aaaaaaa',
-                        text:
-                            '虚拟仿真实验项目面向普速铁路和高速铁路两个方向，全面展现机车控制系统的组成结构和功能，用以学生对机车控制系统的系统性学习，掌握列车操纵驾驶过程中所涉及的专业技能。',
-                        img: require('../../static/images/home_project_4.png'),
-                        id: '4'
-                    }
-                ]
-            ],
+            bannerList: [],
+            projectsList: [],
             proCurrentIndex: 1,
-            sourceList: [
-                [
-                    require('../../static/images/home_source_1.jpg'),
-                    require('../../static/images/home_source_1.jpg'),
-                    require('../../static/images/home_source_1.jpg'),
-                    require('../../static/images/home_source_1.jpg')
-                ],
-                [
-                    '../../static/images/home_source_2.jpg',
-                    '../../static/images/home_source_1.jpg',
-                    '../../static/images/home_source_1.jpg',
-                    '../../static/images/home_source_1.jpg'
-                ],
-                [
-                    '../../static/images/home_source_3.jpg',
-                    '../../static/images/home_source_1.jpg',
-                    '../../static/images/home_source_1.jpg',
-                    '../../static/images/home_source_1.jpg'
-                ],
-                [
-                    '../../static/images/home_source_4.jpg',
-                    '../../static/images/home_source_1.jpg',
-                    '../../static/images/home_source_1.jpg',
-                    '../../static/images/home_source_1.jpg'
-                ]
-            ],
+            proPage: 1,
+            sourceList: [],
             sourceIndex: 1,
+            sourcePage: 1,
+            noticeList: [],
+            resultList: [],
             leftUndoIcon: require('../../static/images/home_arrow_left_undo.png'),
             rightUndoIcon: require('../../static/images/home_arrow_right_undo.png'),
             leftDoIcon: require('../../static/images/home_arrow_left_do.png'),
@@ -306,6 +176,76 @@ export default {
                 .post(this.API_ROOT + 'columnContent/listFront', data)
                 .then(res => {
                     this.bannerList = (res.data && res.data.items) || []
+                })
+        },
+        getResultList() {
+            const data = {
+                page: 1,
+                rows: 5,
+                collegeId: this.collegeId,
+                columnId: 84
+            }
+            Vue.axios
+                .post(this.API_ROOT + 'columnContent/listFront', data)
+                .then(res => {
+                    this.resultList = (res.data && res.data.items) || []
+                })
+        },
+        getSourceList() {
+            const data = {
+                page: 1,
+                rows: 4,
+                collegeId: this.collegeId,
+                columnId: 24
+            }
+            Vue.axios
+                .post(this.API_ROOT + 'columnContent/listFront', data)
+                .then(res => {
+                    if (res.data && res.data.items) {
+                        if (res.data.items.length === 4) {
+                            this.sourcePage++
+                            this.getSourceList()
+                        }
+                        this.sourceList = [
+                            ...this.sourceList,
+                            ...[res.data.items]
+                        ]
+                    }
+                })
+        },
+        getNoticeList() {
+            const data = {
+                page: 1,
+                rows: 5,
+                collegeId: this.collegeId,
+                columnId: 32
+            }
+            Vue.axios
+                .post(this.API_ROOT + 'columnContent/listFront', data)
+                .then(res => {
+                    this.noticeList = (res.data && res.data.items) || []
+                })
+        },
+        getProjectsList() {
+            const data = {
+                page: 1,
+                rows: 4,
+                collegeId: this.collegeId,
+                columnId: 21
+            }
+            Vue.axios
+                .post(this.API_ROOT + 'columnContent/listFront', data)
+                .then(res => {
+                    if (res.data && res.data.items) {
+                        if (res.data.items.length === 4) {
+                            this.proPage++
+                            this.getProjectsList()
+                        }
+                        this.projectsList = [
+                            ...this.projectsList,
+                            ...[res.data.items]
+                        ]
+                    }
                 })
         },
         jumpToExperiment(index) {
@@ -351,6 +291,10 @@ export default {
             localStorage.setItem('collegeId', this.$route.query.id)
         }
         this.getBannerList()
+        this.getProjectsList()
+        this.getSourceList()
+        this.getNoticeList()
+        this.getResultList()
     }
 }
 </script>
@@ -439,22 +383,27 @@ export default {
         .project-list {
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: flex-start;
             align-items: stretch;
             .project-item {
-                flex: 1;
+                // flex: 1;
+                width: 25%;
                 margin-right: 20px;
                 &:last-child {
                     margin-right: 0;
                 }
                 .project-bg {
-                    width: 100%;
+                    // width: 100%;
+                    width: 280px;
+                    height: 280px;
                 }
                 .project-desc {
                     background: @df-color;
                     color: #fff;
                     padding: 20px;
                     min-height: 270px;
+                    width: 280px;
+                    box-sizing: border-box;
                     .desc-title {
                         font-size: 16px;
                         margin: 0px 0 20px;
@@ -473,6 +422,12 @@ export default {
         }
         .el-carousel__container {
             height: 550px;
+        }
+    }
+    #home-source {
+        .project-bg {
+            width: 285px;
+            height: 190px;
         }
     }
     .home-news {
@@ -532,7 +487,7 @@ export default {
                     }
                 }
                 .news-time {
-                    width: 100px;
+                    width: 200px;
                     text-align: right;
                 }
             }
