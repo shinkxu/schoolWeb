@@ -218,7 +218,7 @@ export default {
                 path: '/experimentdetails',
                 query: {
                     id: id,
-                    index: 1
+                    index: this.currentIndex
                 }
             })
         }

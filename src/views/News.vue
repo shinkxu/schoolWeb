@@ -80,7 +80,7 @@ export default {
                 path: '/newsdetail',
                 query: {
                     id: item.id,
-                    index: 1
+                    index: this.currentIndex
                 }
             })
         },

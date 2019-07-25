@@ -107,7 +107,7 @@ export default {
                 path: '/sourcedetails',
                 query: {
                     id: id,
-                    index: 1
+                    index: this.currentIndex
                 }
             })
         },

@@ -102,7 +102,7 @@ export default {
                 path: '/resultdetails',
                 query: {
                     id: id,
-                    index: 1
+                    index: this.currentIndex
                 }
             })
         },
