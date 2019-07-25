@@ -15,7 +15,8 @@
                     <span class="search-confirm"><img src="../../static/images/search.png"
                              alt=""></span>
                 </div>
-                <div class="head-login">登录系统</div>
+                <div class="head-login"
+                     @click="jumpToLogin">登录系统</div>
             </div>
         </div>
         <div class="head-menu">
@@ -114,6 +115,9 @@ export default {
         },
         jumpToHome() {
             this.$router.push('/home')
+        },
+        jumpToLogin() {
+            window.location.href = 'http://39.104.97.6/index.html'
         }
     }
 }
