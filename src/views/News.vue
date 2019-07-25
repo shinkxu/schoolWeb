@@ -12,6 +12,7 @@
                     class="news-notice-list">
                     <li v-for="(item, index) in list1"
                         :key="index"
+                        @click="jumpToDetails(item)"
                         class="news-item">
                         <i class="news-style"></i>
                         <span class="news-desc clamp-line">{{item.title}}</span>
@@ -72,6 +73,15 @@ export default {
         },
         changeCount(index) {
             this.pageCount = index
+        },
+        jumpToDetails(item) {
+            this.$router.push({
+                path: '/newsdetail',
+                query: {
+                    id: item.id,
+                    index: 1
+                }
+            })
         },
         getList1() {
             const data = {

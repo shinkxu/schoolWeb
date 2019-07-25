@@ -46,7 +46,7 @@
                             <div class="project-desc">
                                 <h5 class="desc-title">{{v.title}}</h5>
                                 <span class="desc-inner"
-                                      @click="jumpToExperiment(k)">{{v.content}}</span>
+                                      @click="jumpToExperiment(v.id)">{{v.content}}</span>
                             </div>
                         </div>
                     </el-carousel-item>
@@ -63,6 +63,7 @@
                     <ul class="news-list">
                         <li class="news-item"
                             v-for="(item, index) in noticeList"
+                            @click="jumpToNewDetails(item)"
                             :key="index">
                             <i class="news-style"></i>
                             <span class="news-desc clamp-line">{{item.title}}</span>
@@ -78,7 +79,8 @@
                     <ul class="news-list">
                         <li class="news-item"
                             v-for="(item, index) in resultList"
-                            :key="index">
+                            :key="index"
+                            @click="jumpToResultDetails(item.id)">
                             <i class="news-style"></i>
                             <span class="news-desc clamp-line">{{item.title}}</span>
                             <span class="news-time">{{new Date(item.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</span>
@@ -247,6 +249,24 @@ export default {
                         ]
                     }
                 })
+        },
+        jumpToNewDetails(item) {
+            this.$router.push({
+                path: '/newsdetail',
+                query: {
+                    id: item.id,
+                    index: 1
+                }
+            })
+        },
+        jumpToResultDetails(id) {
+            this.$router.push({
+                path: '/resultdetails',
+                query: {
+                    id: id,
+                    index: 1
+                }
+            })
         },
         jumpToExperiment(index) {
             this.$router.push(`/experiment?id=${index}`)

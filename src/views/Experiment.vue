@@ -212,7 +212,15 @@ export default {
                         []
                 })
         },
-        jumpTodetails(id) {}
+        jumpTodetails(id) {
+            this.$router.push({
+                path: '/experimentdetails',
+                query: {
+                    id: id,
+                    index: 1
+                }
+            })
+        }
     },
     mounted() {
         if (this.$route.query.id) {

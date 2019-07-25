@@ -34,10 +34,18 @@ Vue.prototype.API_ROOT = (process.env.NODE_ENV === 'production') ?
 
 router.beforeEach((to, from, next) => {
     window.document.title = '兰州交通大学虚拟仿真实验教学平台'
-    if (!to.query.id && (!localStorage.getItem('collegeId') || localStorage.getItem('college') === 'undefined')) {
+    if (!to.query.id && (!localStorage.getItem('collegeId') || localStorage.getItem('collegeId') === 'undefined')) {
         // todo: 学校平台地址
         window.location.href = 'http://127.0.0.1:8020/'
     }
+    Vue.axios
+        .get(Vue.prototype.API_ROOT + 'crmColleController/queryOne?collegeId=' + (to.query.id || localStorage.getItem('collegeId')))
+        .then(res => {
+            console.log(333, res)
+            if (res.code === 200) {
+                localStorage.setItem('collegeInfo', res.data)
+            }
+        })
     next()
 })
 

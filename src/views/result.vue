@@ -97,7 +97,15 @@ export default {
         changeMenu(index) {
             this.currentIndex = index
         },
-        jumpTodetails(id) {},
+        jumpTodetails(id) {
+            this.$router.push({
+                path: '/resultdetails',
+                query: {
+                    id: id,
+                    index: 1
+                }
+            })
+        },
         getList(id, list) {
             const data = {
                 page: 1,

@@ -4,11 +4,14 @@ import Router from 'vue-router'
 const Home = () => import( /* webpackChunkName: "about" */ './views/Home.vue')
 const Center = () => import( /* webpackChunkName: "Center" */ './views/Center.vue')
 const News = () => import( /* webpackChunkName: "News" */ './views/News.vue')
+const NewsDetail = () => import( /* webpackChunkName: "News" */ './views/NewsDetail.vue')
 const Experiment = () => import( /* webpackChunkName: "Experiment" */ './views/Experiment.vue')
 const Source = () => import( /* webpackChunkName: "Source" */ './views/Source.vue')
 const Rules = () => import( /* webpackChunkName: "Rules" */ './views/Rules.vue')
 const Equipment = () => import( /* webpackChunkName: "Equipment" */ './views/Equipment.vue')
+const ExperimentDetails = () => import( /* webpackChunkName: "Equipment" */ './views/ExperimentDetails.vue')
 const Result = () => import( /* webpackChunkName: "Result" */ './views/Result.vue')
+const ResultDetails = () => import( /* webpackChunkName: "Result" */ './views/ResultDetails.vue')
 const Teachers = () => import( /* webpackChunkName: "Teacher" */ './views/Teachers.vue')
 const About = () => import( /* webpackChunkName: "about" */ './views/About.vue')
 
@@ -38,10 +41,21 @@ export default new Router({
             component: News
         },
         {
+            path: '/newsdetail',
+            name: 'newsdetail',
+            component: NewsDetail
+        },
+        {
             path: '/experiment',
             name: 'experiment',
             component: Experiment
         },
+        {
+            path: '/experimentdetails',
+            name: 'experimentDetails',
+            component: ExperimentDetails
+        },
+
         {
             path: '/source',
             name: 'source',
@@ -61,6 +75,11 @@ export default new Router({
             path: '/result',
             name: 'result',
             component: Result
+        },
+        {
+            path: '/resultdetails',
+            name: 'resultDetails',
+            component: ResultDetails
         },
         {
             path: '/teachers',
