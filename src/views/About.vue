@@ -8,9 +8,10 @@
                 <div v-show="this.currentIndex === 0">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
-                    <div class="news-title">关于我们</div>
-                    <div class="news-common-time">发布时间:2019-04-08 17:49:20</div>
-                    <div class="news-content">
+                    <div class="news-title">{{details.title}}</div>
+                    <div class="news-common-time">发布时间:{{new Date(details.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
+                    <div class="news-content"
+                         v-html="details.content">
                         <p>地 址：兰州市安宁区安宁西路88号兰州交通大学第六教学楼</p>
                         <p>电 话：0931-4957181
                         </p>
@@ -24,10 +25,6 @@
                             联 系 人：王老师
                         </p>
                     </div>
-                </div>
-                <!-- 中心风貌 -->
-                <div v-show="this.currentIndex === 1">
-
                 </div>
             </div>
         </div>
@@ -45,7 +42,27 @@ export default {
     methods: {
         changeMenu(index) {
             this.currentIndex = index
+        },
+        getDetails() {
+            const data = {
+                page: 1,
+                rows: 10000,
+                collegeId: this.collegeId,
+                columnId: 96
+            }
+            Vue.axios
+                .post(this.API_ROOT + 'columnContent/listFront', data)
+                .then(res => {
+                    this.details =
+                        (res.data &&
+                            res.data.items.length > 0 &&
+                            res.data.items[0]) ||
+                        {}
+                })
         }
+    },
+    mounted() {
+        this.getDetails()
     }
 }
 </script>

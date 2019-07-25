@@ -5,7 +5,7 @@
                  @click="jumpToHome()">
                 <img src="../../static/images/logo.png"
                      class="head-logo">
-                <span class="head-name">土木工程学院虚拟仿真实验教学中心</span>
+                <span class="head-name">{{collegeName}}学院虚拟仿真实验教学中心</span>
             </div>
             <div class="head-right">
                 <div class="head-search">
@@ -101,6 +101,11 @@ export default {
                     path: '/about'
                 }
             ]
+        }
+    },
+    computed: {
+        collegeName() {
+            return localStorage.getItem('collegeName') || ''
         }
     },
     methods: {

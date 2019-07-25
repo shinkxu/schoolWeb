@@ -33,17 +33,16 @@ Vue.prototype.API_ROOT = (process.env.NODE_ENV === 'production') ?
     'http://39.104.97.6:8080/' : 'http://39.104.97.6:8080/'
 
 router.beforeEach((to, from, next) => {
-    window.document.title = '兰州交通大学虚拟仿真实验教学平台'
-    if (!to.query.id && (!localStorage.getItem('collegeId') || localStorage.getItem('collegeId') === 'undefined')) {
+    window.document.title = window.localStorage.getItem('collegeName') || '' + '学院虚拟仿真实验教学中心'
+    if (!to.query.id && (!window.localStorage.getItem('collegeId') || window.localStorage.getItem('collegeId') === 'undefined')) {
         // todo: 学校平台地址
         window.location.href = 'http://127.0.0.1:8020/'
     }
     Vue.axios
-        .get(Vue.prototype.API_ROOT + 'crmColleController/queryOne?collegeId=' + (to.query.id || localStorage.getItem('collegeId')))
+        .get(Vue.prototype.API_ROOT + 'crmColleController/queryOne?collegeId=' + (to.query.id || window.localStorage.getItem('collegeId')))
         .then(res => {
-            console.log(333, res)
             if (res.code === 200) {
-                localStorage.setItem('collegeInfo', res.data)
+                localStorage.setItem('collegeName', res.data && res.data.collegeName || '')
             }
         })
     next()

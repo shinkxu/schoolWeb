@@ -7,6 +7,7 @@ const News = () => import( /* webpackChunkName: "News" */ './views/News.vue')
 const NewsDetail = () => import( /* webpackChunkName: "News" */ './views/NewsDetail.vue')
 const Experiment = () => import( /* webpackChunkName: "Experiment" */ './views/Experiment.vue')
 const Source = () => import( /* webpackChunkName: "Source" */ './views/Source.vue')
+const SourceDetails = () => import( /* webpackChunkName: "SourceDetails" */ './views/SourceDetails.vue')
 const Rules = () => import( /* webpackChunkName: "Rules" */ './views/Rules.vue')
 const Equipment = () => import( /* webpackChunkName: "Equipment" */ './views/Equipment.vue')
 const ExperimentDetails = () => import( /* webpackChunkName: "Equipment" */ './views/ExperimentDetails.vue')
@@ -60,6 +61,11 @@ export default new Router({
             path: '/source',
             name: 'source',
             component: Source
+        },
+        {
+            path: '/sourcedetails',
+            name: 'sourceDetails',
+            component: SourceDetails
         },
         {
             path: '/rules',
