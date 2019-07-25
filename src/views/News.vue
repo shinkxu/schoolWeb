@@ -4,6 +4,7 @@
             <menu-list class="center-menu"
                        :menuList="menuList"
                        menuTitle="新闻公告"
+                       :activeIndex="currentIndex"
                        @change="changeMenu"></menu-list>
             <div class="app-inner-right">
                 <img class="news-img"
@@ -113,6 +114,10 @@ export default {
         }
     },
     mounted() {
+        const query = this.$route.query
+        if (query && query.index) {
+            this.currentIndex = Number(query.index)
+        }
         this.getList1()
         this.getList2()
     }

@@ -19,6 +19,15 @@ export default {
         menuList: {
             type: Array,
             default: []
+        },
+        activeIndex: 0
+    },
+    watch: {
+        activeIndex: {
+            handler(val) {
+                this.currentIndex = val || 0
+            },
+            immediate: true
         }
     },
     data() {

@@ -3,7 +3,8 @@
         <div class="app-inner containner">
             <menu-list :menuList="menuList"
                        menuTitle="中心概况"
-                       @change="changeMenu"></menu-list>
+                       @change="changeMenu"
+                       :activeIndex="currentIndex"></menu-list>
             <div class="app-inner-right">
                 <!-- 中心简介 -->
                 <div v-show="this.currentIndex === 0">

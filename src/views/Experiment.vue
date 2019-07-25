@@ -9,6 +9,7 @@
             <menu-list class="center-menu"
                        :menuList="menuList"
                        menuTitle="实验教学"
+                       :activeIndex="currentIndex"
                        @change="changeMenu"></menu-list>
             <div class="app-inner-right">
                 <!-- <img class="news-img"
