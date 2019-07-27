@@ -35,8 +35,7 @@ Vue.prototype.API_ROOT = (process.env.NODE_ENV === 'production') ?
 router.beforeEach((to, from, next) => {
     window.document.title = window.localStorage.getItem('collegeName') || '' + '学院虚拟仿真实验教学中心'
     if (!to.query.id && (!window.localStorage.getItem('collegeId') || window.localStorage.getItem('collegeId') === 'undefined')) {
-        // todo: 学校平台地址
-        window.location.href = 'http://127.0.0.1:8020/'
+        window.location.href = 'http://39.104.97.6:8083/'
     }
     Vue.axios
         .get(Vue.prototype.API_ROOT + 'crmColleController/queryOne?collegeId=' + (to.query.id || window.localStorage.getItem('collegeId')))

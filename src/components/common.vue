@@ -7,7 +7,7 @@
                      class="head-logo">
                 <span class="head-name">{{collegeName}}学院虚拟仿真实验教学中心</span>
             </div>
-            <div class="head-right">
+            <!-- <div class="head-right">
                 <div class="head-search">
                     <input class="search-left"
                            type="text"
@@ -17,7 +17,7 @@
                 </div>
                 <div class="head-login"
                      @click="jumpToLogin">登录系统</div>
-            </div>
+            </div> -->
         </div>
         <div class="head-menu">
             <ul class="menu-wrapper">
