@@ -80,11 +80,23 @@ export default {
             Vue.axios
                 .post(this.API_ROOT + 'columnContent/listFront', data)
                 .then(res => {
-                    this.details =
+                    details =
                         (res.data &&
                             res.data.items.length > 0 &&
                             res.data.items[0]) ||
                         {}
+
+                    switch (id) {
+                        case 80:
+                            this.details1 = details
+                            break
+                        case 81:
+                            this.details2 = details
+                            break
+                        case 82:
+                            this.details3 = details
+                            break
+                    }
                 })
         }
     },

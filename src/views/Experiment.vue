@@ -211,6 +211,24 @@ export default {
                             res.data.items.length > 0 &&
                             res.data.items) ||
                         []
+
+                    switch (id) {
+                        case 41:
+                            this.list1 = list
+                            break
+                        case 47:
+                            this.list2 = list
+                            break
+                        case 53:
+                            this.list3 = list
+                            break
+                        case 57:
+                            this.list4 = list
+                            break
+                        case 62:
+                            this.list5 = list
+                            break
+                    }
                 })
         },
         jumpTodetails(id) {

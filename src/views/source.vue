@@ -127,6 +127,23 @@ export default {
                             res.data.items.length > 0 &&
                             res.data.items) ||
                         []
+                    switch (id) {
+                        case 69:
+                            this.list1 = list
+                            break
+                        case 70:
+                            this.list2 = list
+                            break
+                        case 71:
+                            this.list3 = list
+                            break
+                        case 72:
+                            this.list4 = list
+                            break
+                        case 73:
+                            this.list5 = list
+                            break
+                    }
                 })
         }
     },
