@@ -7,11 +7,34 @@
                        @change="changeMenu"></menu-tree> -->
             <menu-list :menuList="menuList"
                        menuTitle="设备环境"
+                       :activeIndex="currentIndex"
                        @change="changeMenu"></menu-list>
             <div class="app-inner-right">
                 <ul v-show="currentIndex === 0"
                     class="news-notice-list">
                     <li v-for="(item, index) in list1"
+                        :key="index"
+                        class="news-item"
+                        @click="jumpTodetails(item.id)">
+                        <i class="news-style"></i>
+                        <span class="news-desc clamp-line">{{item.title}}</span>
+                        <span class="news-time">{{new Date(item.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</span>
+                    </li>
+                </ul>
+                <ul v-show="currentIndex === 1"
+                    class="news-notice-list">
+                    <li v-for="(item, index) in list2"
+                        :key="index"
+                        class="news-item"
+                        @click="jumpTodetails(item.id)">
+                        <i class="news-style"></i>
+                        <span class="news-desc clamp-line">{{item.title}}</span>
+                        <span class="news-time">{{new Date(item.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</span>
+                    </li>
+                </ul>
+                <ul v-show="currentIndex === 2"
+                    class="news-notice-list">
+                    <li v-for="(item, index) in list3"
                         :key="index"
                         class="news-item"
                         @click="jumpTodetails(item.id)">
@@ -121,10 +144,20 @@ export default {
                             res.data.items.length > 0 &&
                             res.data.items) ||
                         []
+                    if (id === 85) {
+                        this.list1 = list
+                    } else if (id === 92) {
+                        this.list2 = list
+                    } else if (id === 93) {
+                        this.list3 = list
+                    }
                 })
         }
     },
     mounted() {
+        if (this.$route.query.index) {
+            this.currentIndex = Number(this.$route.query.index)
+        }
         this.getList(85, this.list1)
         this.getList(92, this.list2)
         this.getList(93, this.list3)

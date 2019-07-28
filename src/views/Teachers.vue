@@ -4,6 +4,7 @@
             <menu-list class="center-menu"
                        :menuList="menuList"
                        menuTitle="师资队伍"
+                       :activeIndex="currentIndex"
                        @change="changeMenu"></menu-list>
             <div class="app-inner-right">
                 <div v-show="this.currentIndex === 0">
@@ -124,6 +125,9 @@ export default {
         }
     },
     mounted() {
+        if (this.$route.query.id) {
+            this.currentIndex = Number(this.$route.query.index)
+        }
         this.getDetails(34, this.shouzeDetails)
         this.getDetails(35, this.details2)
         this.getDetails(36, this.details3)

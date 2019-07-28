@@ -4,6 +4,7 @@
             <menu-list class="center-menu"
                        :menuList="menuList"
                        menuTitle="资源共享"
+                       :activeIndex="currentIndex"
                        @change="changeMenu"></menu-list>
             <div class="app-inner-right">
                 <ul v-show="currentIndex === 0"
@@ -130,8 +131,8 @@ export default {
         }
     },
     mounted() {
-        if (this.$route.query.id) {
-            this.currentIndex = Number(this.$route.query.id)
+        if (this.$route.query.index) {
+            this.currentIndex = Number(this.$route.query.index)
         }
         this.getList(69, this.list1)
         this.getList(70, this.list2)
