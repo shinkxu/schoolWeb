@@ -11,7 +11,8 @@
                     <img class="news-img"
                          src="../../static/images/news_img.png">
                     <div class="news-title">{{details.title}}</div>
-                    <div class="news-common-time">发布时间:{{new Date(details.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
+                    <div class="news-common-time"
+                         v-show="details && details.updateTime">发布时间:{{new Date(details.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
                     <div class="news-content"
                          v-html="details.content">
                     </div>
@@ -47,7 +48,8 @@
                     <img class="news-img"
                          src="../../static/images/news_img.png">
                     <div class="news-title">{{systemDetails.title}}</div>
-                    <div class="news-common-time">发布时间:{{new Date(systemDetails.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
+                    <div class="news-common-time"
+                         v-show="details && details.updateTime">发布时间:{{new Date(systemDetails.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
                     <div class="news-content"
                          v-html="systemDetails.content">
                     </div>
@@ -57,7 +59,8 @@
                     <img class="news-img"
                          src="../../static/images/news_img.png">
                     <div class="news-title">{{allDetails.title}}</div>
-                    <div class="news-common-time">发布时间:{{new Date(allDetails.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
+                    <div class="news-common-time"
+                         v-show="details && details.updateTime">发布时间:{{new Date(allDetails.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
                     <div class="news-content"
                          v-html="allDetails.content">
                     </div>

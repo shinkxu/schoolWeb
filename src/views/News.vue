@@ -20,6 +20,17 @@
                         <span class="news-time">{{new Date(item.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</span>
                     </li>
                 </ul>
+                <ul v-show="currentIndex === 1"
+                    class="news-notice-list">
+                    <li v-for="(item, index) in list2"
+                        :key="index"
+                        @click="jumpToDetails(item)"
+                        class="news-item">
+                        <i class="news-style"></i>
+                        <span class="news-desc clamp-line">{{item.title}}</span>
+                        <span class="news-time">{{new Date(item.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</span>
+                    </li>
+                </ul>
                 <div class="my-pagination">
                     <button :class="{'disable': pageCount === 1}"
                             :disabled="pageCount === 1">首页</button>
