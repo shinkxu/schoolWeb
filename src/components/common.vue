@@ -117,7 +117,7 @@ export default {
             this.$router.push('/home')
         },
         jumpToLogin() {
-            window.location.href = 'http://39.104.97.6/index.html'
+            window.location.href = 'http://47.105.130.130/index.html'
         }
     }
 }

@@ -30,12 +30,12 @@ Vue.prototype.$message = Message
 Vue.prototype.$alert = MessageBox.alert
 
 Vue.prototype.API_ROOT = (process.env.NODE_ENV === 'production') ?
-    'http://39.104.97.6:8080/' : 'http://39.104.97.6:8080/'
+    'http://47.105.130.130:8100/' : 'http://47.105.130.130:8100/'
 
 router.beforeEach((to, from, next) => {
     window.document.title = window.localStorage.getItem('collegeName') || '' + '学院虚拟仿真实验教学中心'
     if (!to.query.id && (!window.localStorage.getItem('collegeId') || window.localStorage.getItem('collegeId') === 'undefined')) {
-        window.location.href = 'http://39.104.97.6:8083/'
+        window.location.href = 'http://47.105.130.130:8083/'
     }
     Vue.axios
         .get(Vue.prototype.API_ROOT + 'crmColleController/queryOne?collegeId=' + (to.query.id || window.localStorage.getItem('collegeId')))
