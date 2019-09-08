@@ -122,7 +122,7 @@
                 </el-carousel>
             </div>
         </div>
-        <div class="home-footer">
+        <!-- <div class="home-footer">
             <div class="home-footer-inner containner">
                 <img src="../../static/images/u148.jpg" />
                 <img src="../../static/images/u150.jpg" />
@@ -134,7 +134,7 @@
                 <img src="../../static/images/u162.jpg" />
                 <img src="../../static/images/u164.jpg" />
             </div>
-        </div>
+        </div> -->
 
     </common>
 </template>
@@ -195,7 +195,7 @@ export default {
         },
         getSourceList() {
             const data = {
-                page: 1,
+                page: this.sourcePage,
                 rows: 4,
                 collegeId: this.collegeId,
                 columnId: 24
@@ -230,7 +230,7 @@ export default {
         },
         getProjectsList() {
             const data = {
-                page: 1,
+                page: this.proPage,
                 rows: 4,
                 collegeId: this.collegeId,
                 columnId: 21

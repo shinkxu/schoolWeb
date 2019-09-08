@@ -8,7 +8,7 @@
                 <div v-show="this.currentIndex === 0">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
-                    <div class="news-title">{{details.title}}</div>
+                    <div class="news-title">{{details && details.title}}</div>
                     <div class="news-common-time">发布时间:{{new Date(details.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
                     <div class="news-content"
                          v-html="details.content">
