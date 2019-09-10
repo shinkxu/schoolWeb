@@ -32,11 +32,14 @@
 </template>
 
 <script>
+import Vue from 'vue';
 export default {
     data() {
         return {
             menuList: [],
-            currentIndex: 0
+            currentIndex: 0,
+            details: [],
+            collegeId: Number(localStorage.getItem('collegeId'))
         }
     },
     methods: {
