@@ -10,7 +10,7 @@
                          :src="item.showImg">
                     <div class="item-inner">
                         <div class="inner-title">{{item.title}}</div>
-                        <div class="inner-intro clamp-lines">{{item.content}}</div>
+                        <div class="inner-intro clamp-lines" v-html="item.content"></div>
                         <button class="inner-more"
                                 @click="jumpToCenter()">查看更多</button>
                     </div>
@@ -46,7 +46,8 @@
                             <div class="project-desc">
                                 <h5 class="desc-title">{{v.title}}</h5>
                                 <span class="desc-inner"
-                                      @click="jumpToExperiment(v.id)">{{v.content}}</span>
+                                      @click="jumpToExperiment(v.id)"
+                                      v-html="v.content"></span>
                             </div>
                         </div>
                     </el-carousel-item>
