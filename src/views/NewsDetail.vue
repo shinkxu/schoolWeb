@@ -61,7 +61,7 @@ export default {
                     this.details = res.data || {}
                     this.details.updateTime = new Date(
                         this.details.updateTime
-                    ).format('yyyy-MM-dd HH:mm:ss')
+                    ).format('yyyy-MM-dd hh:mm:ss')
                 })
         }
     }

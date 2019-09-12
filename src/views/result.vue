@@ -6,7 +6,7 @@
                        menuTitle="教学成果"
                        @change="changeMenu"></menu-tree> -->
             <menu-list :menuList="menuList"
-                       menuTitle="设备环境"
+                       menuTitle="教学成果"
                        :activeIndex="currentIndex"
                        @change="changeMenu"></menu-list>
             <div class="app-inner-right">
