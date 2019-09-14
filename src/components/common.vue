@@ -220,6 +220,13 @@ export default {
     }
     .app-content {
         padding: 20px 0 0;
+        background: #fff;
+        position: fixed;
+        top:160px;
+        bottom: 80px;
+        left:0;
+        width: 100%;
+        overflow: hidden;
     }
     .footer {
         background-color: rgba(54, 54, 54, 1);
@@ -227,6 +234,10 @@ export default {
         color: #fff;
         padding: 30px 0;
         line-height: 1.4;
+        position: fixed;
+        bottom:0;
+        left:0;
+        width: 100%;
     }
 }
 </style>

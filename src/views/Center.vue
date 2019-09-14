@@ -203,7 +203,8 @@ export default {
         align-items: flex-start;
         padding: 0 3% 20px 0;
         > img {
-            width: 100%;
+            width: 290px;
+            height: 210px;
             margin-bottom: 10px;
         }
         .style-item-title {

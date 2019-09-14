@@ -35,6 +35,7 @@
 
 
 .app-inner {
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -42,7 +43,10 @@
 
     .app-inner-right {
         flex: 1;
+        height:100%;
         margin-left: 20px;
+        overflow:auto;
+        &::-webkit-scrollbar{width:0px;}
 
         .news-img {
             width: 100%;

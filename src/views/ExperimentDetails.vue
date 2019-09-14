@@ -132,7 +132,7 @@ export default {
     },
     methods: {
         changeMenu(index) {
-            this.$router.push('/result?index=' + Number(index))
+            this.$router.push('/experiment?index=' + Number(index))
         },
         getDetails() {
             const data = {
