@@ -162,4 +162,31 @@ export default {
 
 <style lang="less">
 @import url('../../static/css/base');
+.news-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 16px;
+    padding: 8px 0;
+    .news-style {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgb(0, 101, 156);
+        margin-right: 10px;
+    }
+    .news-desc {
+        flex: 1;
+        &:hover {
+            color: rgb(0, 101, 156);
+            cursor: pointer;
+        }
+    }
+    .news-time {
+        width: 200px;
+        text-align: right;
+    }
+}
 </style>

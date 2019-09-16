@@ -326,6 +326,7 @@ export default {
     background: #fff;
     .app-content {
         padding: 10px 0 0;
+        overflow: auto;
     }
     .home-banner {
         margin: 20px 0;
