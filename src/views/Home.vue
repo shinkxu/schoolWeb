@@ -20,7 +20,7 @@
         <div class="home-project">
             <div class="containner">
                 <div class="project-title">
-                    <span>虚拟仿真实验项目</span>
+                    <span>虚拟仿真实验项目{{proCurrentIndex}}{{projectsList.length }}</span>
                     <div class="project-change">
                         <img :src="proCurrentIndex === 1 ? leftUndoIcon : leftDoIcon"
                              class="change-button"
@@ -209,10 +209,12 @@ export default {
                             this.sourcePage++
                             this.getSourceList()
                         }
-                        this.sourceList = [
-                            ...this.sourceList,
-                            ...[res.data.items]
-                        ]
+                        if (res.data.items.length > 0) {
+                            this.sourceList = [
+                                ...this.sourceList,
+                                ...[res.data.items]
+                            ]
+                        }
                     }
                 })
         },
@@ -244,10 +246,12 @@ export default {
                             this.proPage++
                             this.getProjectsList()
                         }
-                        this.projectsList = [
-                            ...this.projectsList,
-                            ...[res.data.items]
-                        ]
+                        if(res.data.items.length > 0) {
+                            this.projectsList = [
+                                ...this.projectsList,
+                                ...[res.data.items]
+                            ]
+                        }
                     }
                 })
         },
@@ -270,7 +274,7 @@ export default {
             })
         },
         jumpToExperiment(index) {
-            this.$router.push(`/experiment?id=${index}`)
+            this.$router.push(`/experiment?id=${index}&index=0`)
         },
         changeLast() {
             if (this.proCurrentIndex === 1) return
@@ -458,7 +462,7 @@ export default {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
         }
         .news-notice,
         .news-result {

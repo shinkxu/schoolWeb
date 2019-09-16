@@ -242,8 +242,8 @@ export default {
         }
     },
     mounted() {
-        if (this.$route.query.id) {
-            this.currentIndex = Number(this.$route.query.id)
+        if (this.$route.query.index) {
+            this.currentIndex = Number(this.$route.query.index)
         }
         this.getList(41, this.list1)
         this.getList(47, this.list2)

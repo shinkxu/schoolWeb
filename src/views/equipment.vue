@@ -3,9 +3,10 @@
         <div class="app-inner containner">
             <menu-list :menuList="menuList"
                        menuTitle="设备环境"
+                       :activeIndex="currentIndex"
                        @change="changeMenu"></menu-list>
             <div class="app-inner-right">
-                <div v-show="this.currentIndex === 0">
+                <div v-show="currentIndex === 0">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
                     <div class="news-title">信息化环境</div>
@@ -16,7 +17,7 @@
                     <div class="news-content"
                          v-html="details1.content"></div>
                 </div>
-                <div v-show="this.currentIndex === 1">
+                <div v-show="currentIndex === 1">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
                     <div class="news-title">软件平台</div>
@@ -27,7 +28,7 @@
                     <div class="news-content"
                          v-html="details2.content"></div>
                 </div>
-                <div v-show="this.currentIndex === 2">
+                <div v-show="currentIndex === 2">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
                     <div class="news-title">信息化环境</div>
@@ -101,6 +102,10 @@ export default {
         }
     },
     mounted() {
+        if (this.$route.query.index) {
+            this.currentIndex = Number(this.$route.query.index)
+            console.log(2222, currentIndex)
+        }
         this.getDetails(80, this.details1)
         this.getDetails(81, this.details2)
         this.getDetails(82, this.details3)
