@@ -3,7 +3,7 @@
         <div class="app-inner containner">
             <menu-list class="center-menu"
                        :menuList="menuList"
-                       menuTitle="设备环境"
+                       menuTitle="教学成果"
                        :activeIndex="currentIndex"
                        @change="changeMenu"></menu-list>
             <div class="app-inner-right">

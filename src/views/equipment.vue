@@ -9,7 +9,7 @@
                 <div v-show="currentIndex === 0">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
-                    <div class="news-title">信息化环境</div>
+                    <div class="news-title">{{details1 && details1.title}}</div>
                     <div class="news-common-time"
                          v-show="details1.updateTime">
                         发布时间:{{new Date(details1.updateTime).format('yyyy-MM-dd hh:mm:ss')}}
@@ -20,7 +20,7 @@
                 <div v-show="currentIndex === 1">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
-                    <div class="news-title">软件平台</div>
+                    <div class="news-title">{{details2 && details2.title}}</div>
                     <div class="news-common-time"
                          v-show="details2.updateTime">
                         发布时间:{{new Date(details2.updateTime).format('yyyy-MM-dd hh:mm:ss')}}
@@ -31,7 +31,7 @@
                 <div v-show="currentIndex === 2">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
-                    <div class="news-title">信息化环境</div>
+                    <div class="news-title">{{details3 && details3.title}}</div>
                     <div class="news-common-time"
                          v-show="details3.updateTime">
                         发布时间:{{new Date(details3.updateTime).format('yyyy-MM-dd hh:mm:ss')}}
@@ -88,13 +88,13 @@ export default {
                         {}
 
                     switch (id) {
-                        case 80:
+                        case 81:
                             this.details1 = details
                             break
-                        case 81:
+                        case 82:
                             this.details2 = details
                             break
-                        case 82:
+                        case 83:
                             this.details3 = details
                             break
                     }
@@ -106,9 +106,9 @@ export default {
             this.currentIndex = Number(this.$route.query.index)
             console.log(2222, currentIndex)
         }
-        this.getDetails(80, this.details1)
-        this.getDetails(81, this.details2)
-        this.getDetails(82, this.details3)
+        this.getDetails(81, this.details1)
+        this.getDetails(82, this.details2)
+        this.getDetails(83, this.details3)
     }
 }
 </script>

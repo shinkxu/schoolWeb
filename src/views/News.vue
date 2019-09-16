@@ -43,9 +43,9 @@
                                    :page-size="10"
                                    :total="total">
                     </el-pagination>
-                    <button :class="{'disable': pageCount === (Math.ceil(total / 2))}"
-                            :disabled="pageCount === (Math.ceil(total / 2))"
-                            @click="changeCount(Math.ceil(total /2))">尾页</button>
+                    <button :class="{'disable': pageCount === (Math.ceil(total / 10))}"
+                            :disabled="pageCount === (Math.ceil(total / 10))"
+                            @click="changeCount(Math.ceil(total /10))">尾页</button>
                 </div>
             </div>
         </div>
