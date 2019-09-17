@@ -314,6 +314,7 @@ export default {
     mounted() {
         if (this.$route.query.id) {
             localStorage.setItem('collegeId', this.$route.query.id)
+            this.collegeId = this.$route.query.id
         }
         this.getBannerList()
         this.getProjectsList()
@@ -467,6 +468,7 @@ export default {
         .news-notice,
         .news-result {
             flex: 1;
+            width: 50%;
         }
         .news-notice {
             margin-right: 30px;

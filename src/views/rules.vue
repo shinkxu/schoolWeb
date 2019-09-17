@@ -10,7 +10,7 @@
                 <div v-show="this.currentIndex === 0">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
-                    <div class="news-title">学生实验守则</div>
+                    <div class="news-title">{{shouzeDetails.title}}</div>
                     <div class="news-time"
                          v-show="shouzeDetails.updateTime">发布时间: {{new Date(shouzeDetails.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
                     <div class="news-content"
@@ -19,38 +19,38 @@
                 <div v-show="this.currentIndex === 1">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
-                    <div class="news-title">实验室工作条例</div>
+                    <div class="news-title">{{details2.title}}</div>
                     <div class="news-time"
-                         v-show="shouzeDetails.updateTime">发布时间: {{new Date(details2.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
+                         v-show="details2.updateTime">发布时间: {{new Date(details2.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
                     <div class="news-content"
-                         v-html="shouzeDetails.content"></div>
+                         v-html="details2.content"></div>
                 </div>
                 <div v-show="this.currentIndex === 2">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
-                    <div class="news-title">实验室人员工作条例</div>
+                    <div class="news-title">{{details3.title}}</div>
                     <div class="news-time"
-                         v-show="shouzeDetails.updateTime">发布时间: {{new Date(details3.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
+                         v-show="details3.updateTime">发布时间: {{new Date(details3.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
                     <div class="news-content"
-                         v-html="shouzeDetails.content"></div>
+                         v-html="details3.content"></div>
                 </div>
                 <div v-show="this.currentIndex === 3">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
-                    <div class="news-title">实验教学管理规程</div>
+                    <div class="news-title">{{details4.title}}</div>
                     <div class="news-time"
-                         v-show="shouzeDetails.updateTime">发布时间: {{new Date(details4.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
+                         v-show="details4.updateTime">发布时间: {{new Date(details4.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
                     <div class="news-content"
-                         v-html="shouzeDetails.content"></div>
+                         v-html="details4.content"></div>
                 </div>
                 <div v-show="this.currentIndex === 4">
                     <img class="news-img"
                          src="../../static/images/news_img.png">
-                    <div class="news-title">实验室开放管理办法</div>
+                    <div class="news-title">{{details5.title}}</div>
                     <div class="news-time"
-                         v-show="shouzeDetails.updateTime">发布时间: {{new Date(details5.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
+                         v-show="details5.updateTime">发布时间: {{new Date(details5.updateTime).format('yyyy-MM-dd hh:mm:ss')}}</div>
                     <div class="news-content"
-                         v-html="shouzeDetails.content"></div>
+                         v-html="details5.content"></div>
                 </div>
             </div>
         </div>
@@ -108,11 +108,29 @@ export default {
                             res.data.items.length > 0 &&
                             res.data.items[0]) ||
                         {}
+
+                    switch(id) {
+                        case 75:
+                            this.shouzeDetails = this.details
+                            break;
+                        case 76:
+                            this.details2 = this.details
+                            break;
+                        case 77:
+                            this.details3 = this.details
+                            break;
+                        case 78:
+                            this.details4 = this.details
+                            break;
+                        case 79:
+                            this.details5 = this.details
+                            break;
+                    }
                 })
         }
     },
     mounted() {
-        this.currentIndex = this.$route.query && Number(this.$route.query.index)
+        this.currentIndex = this.$route.query && Number(this.$route.query.index) || 0
         this.getDetails(75, this.shouzeDetails)
         this.getDetails(76, this.details2)
         this.getDetails(77, this.details3)
@@ -124,4 +142,13 @@ export default {
 
 <style lang="less">
 @import url('../../static/css/base');
+#Rules {
+    .news-time {
+        width: 100%;
+        text-align: center;
+    }
+    .news-title{
+        line-height: 1.5;
+    }
+}
 </style>

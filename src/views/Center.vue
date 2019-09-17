@@ -36,6 +36,7 @@
                                        :current-page="pageCount"
                                        @current-change="changeCount"
                                        layout="prev, pager, next"
+                                       :page-size="12"
                                        :total="total">
                         </el-pagination>
                         <button :class="{'disable': pageCount === Math.ceil(total / 12)}"
